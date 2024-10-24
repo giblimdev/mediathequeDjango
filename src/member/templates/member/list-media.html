@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>membres</title>
+    <link rel="stylesheet" href="{%static 'css/member.css'%}">
+</head>
+<body>
+<p>member/template vous parle</p>
+<h1>Liste des médiats de la médiatgèque</h1>
+
+{% if numberMedia > 0 %}
+    <p>Liste des médias</p>
+<ul>
+    {% for book in books %}
+        <li>{{ book }}</li>
+    {% empty %}
+        <p>Aucun article trouvé</p>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>La liste est vide</p>
+{% endif %}
+</body>
+</html>

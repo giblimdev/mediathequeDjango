@@ -1,0 +1,68 @@
+{% extends "biblio/base.html" %}
+{% block title %}Gestion de la Bibliothèque{% endblock %}
+{% block content %}
+    <h1>Gestion de la Bibliothèque</h1>
+
+    <section>
+        <h2>Liste des Membres</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Peut Emprunter</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                <tr>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.can_borrow|yesno:"Oui,Non" }}</td>
+                    <td>
+                        <a href="{% url 'member_detail' member.id %}">Détails</a> |
+                        <a href="{% url 'member_update' member.id %}">Modifier</a> |
+                        <a href="{% url 'member_delete' member.id %}">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Ajouter un Membre</h3>
+        <form method="post" action="{% url 'member_create' %}">
+            {% csrf_token %}
+            {{ member_form.as_p }}
+            <button type="submit">Ajouter Membre</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Liste des Médias</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Catégorie</th>
+                    <th>Disponible</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for media in media %}
+                <tr>
+                    <td>{{ media.title }}</td>
+                    <td>{{ media.author }}</td>
+                    <td>{{ media.get_category_display }}</td>
+                    <td>{{ media.is_available|yesno:"Oui,Non" }}</td>
+                    <td>
+                        <a href="{% url 'media_detail' media.id %}">Détails</a> |
+                        <a href="{% url 'media_update' media.id %}">Modifier</a> |
+                        <a href="{% url 'media_delete' media.id %}">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% endblock %}

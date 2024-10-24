@@ -1,0 +1,10 @@
+{% extends "biblio/base.html" %}
+
+{% block title %}Détails du Média{% endblock %}
+
+{% block content %}
+<h2>{{ media.title }}</h2>
+<p>Auteur: {{ media.author }}</p>
+<p>Catégorie: {{ media.get_category_display }}</p>
+<p>Disponible: {{ media.is_available|yesno:"Oui,Non" }}</p>
+{% endblock %}

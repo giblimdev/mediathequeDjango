@@ -1,0 +1,11 @@
+{% extends "biblio.base.html" %}
+
+{% block content %}
+<h2>Confirmer la Suppression</h2>
+<p>Êtes-vous sûr de vouloir supprimer "{{ media.title }}" ?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Supprimer</button>
+</form>
+<a href="{% url 'index' %}">Annuler</a>
+{% endblock %}
