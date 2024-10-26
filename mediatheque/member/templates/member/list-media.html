@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>membres</title>
+    <link rel="stylesheet" href="{%static 'css/member.css'%}">
+</head>
+<body>
+<p>member/template vous parle</p>
+<h1>Liste des médiats de la médiatgèque</h1>
+
+<section>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Catégorie</th>
+                <th>Disponible</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for media in media %}
+            <tr>
+                <td>{{ media.title }}</td>
+                <td>{{ media.author }}</td>
+                <td>{{ media.get_category_display }}</td>
+                <td>{{ media.is_available|yesno:"Oui,Non" }}</td>
+            {% empty %}
+                    <p>La liste est vide</p>
+            </tr>
+            {% endfor %}
+                
+        </tbody>
+    </table>
+</section>
+<a href="{% url 'index' %}">
+    <button>Retour à l'accueil</button>
+</a>
+</body>
+</html>

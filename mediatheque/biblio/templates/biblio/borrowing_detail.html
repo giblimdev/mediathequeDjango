@@ -1,0 +1,14 @@
+{% extends "biblio/base.html" %}
+
+{% block title %}Détails de l'emprun{% endblock %}
+
+{% block content %}
+<p>borrowing_detail.html</p>
+
+<h2>Emprun</h2>
+   
+<p>nom : {{ borrowing.member }}</p>
+<p>média : {{ borrowing.media }}
+<p>date d'emprun : {{ borrowing.borrow_date }}</p>
+<p>dete deretour prevue : {{ borrowing.due_date }}</p>
+{% endblock %}

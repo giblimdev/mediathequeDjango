@@ -1,0 +1,19 @@
+{% extends "biblio/base.html" %}
+
+{% block content %}
+<p>borrowing_confirm_delete</p>
+
+<h2>Confirmer la Suppression</h2>
+<div>
+<p>Êtes-vous sûr de vouloir supprimer : </p>
+    <p>nom : {{ borrowing.member }}</p>
+    <p>média : {{ borrowing.media }}
+    <p>date d'emprun : {{ borrowing.borrow_date }}</p>
+    <p>dete deretour prevue : {{ borrowing.due_date }}</p>
+    </div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Rendre</button>
+</form>
+<a href="{% url 'home' %}">Annuler</a>
+{% endblock %}

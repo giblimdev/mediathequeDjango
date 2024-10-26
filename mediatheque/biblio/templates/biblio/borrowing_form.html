@@ -1,0 +1,15 @@
+{% extends "biblio/base.html" %}
+
+{% block content %}
+<p>borrowing_form.html</p>
+<h2>Emprunter un Média</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <br>
+
+    <button type="submit">Créer</button>
+</form>
+<a href="{% url 'home' %}">Retour</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bibliothèque{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/biblio.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bibliothèque</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Accueil</a></li>
+                <li><a href="{% url 'member_create' %}">Ajouter Membre</a></li>
+                <li><a href="{% url 'media_create' %}">Ajouter Média</a></li>
+                <li><a href="{% url 'borrowing_create' %}">Emprunter un média</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

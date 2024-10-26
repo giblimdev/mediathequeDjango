@@ -1,0 +1,107 @@
+{% extends "biblio/base.html" %}
+
+{% block content %}
+<p>home.html</p>
+
+    <h1>Gestion de la Bibliothèque</h1>
+
+    <section>
+        <h2>Liste des Membres</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Nb_emprun</th>
+                    <th>Peut Emprunter</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                <tr>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.nb_borrow }}</td>
+                    <td>{{ member.can_borrow|yesno:"Oui,Non" }}</td>
+                    <td>
+                        <a href="{% url 'member_detail' member.id %}">Détails</a> |
+                        <a href="{% url 'member_update' member.id %}">Modifier</a> |
+                        <a href="{% url 'member_delete' member.id %}">Supprimer</a>
+                    </td>
+                </tr>
+                {%empty%}
+                    <p>La liste est vide</p>
+                {% endfor %}
+            </tbody>
+        </table>
+
+       
+    </section>
+
+    <section>
+        <h2>Liste des Médias</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Catégorie</th>
+                    <th>Disponible</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for media in medias %}
+                <tr>
+                    <td>{{ media.title }}</td>
+                    <td>{{ media.author }}</td>
+                    <td>{{ media.get_category_display }}</td>
+                    <td>{{ media.is_available|yesno:"Oui,Non" }}</td>
+                    <td>
+                        <a href="{% url 'media_detail' media.id %}">Détails</a> |
+                        <a href="{% url 'media_update' media.id %}">Modifier</a> |
+                        <a href="{% url 'media_delete' media.id %}">Supprimer</a>
+                    </td>
+                {% empty %}
+                        <p>La liste est vide</p>
+                </tr>
+                {% endfor %}
+                    
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h2>Liste des Empruns</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Membre</th>
+                    <th>Média</th>
+                    <th>date d'emprun</th>
+                    <th>date de retour prevue</th>
+                    <th>date de retour</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for borrowing in borrowings %}
+                <tr>
+                    <td>{{ borrowing.member }}</td>
+                    <td>{{ borrowing.media }}</td>
+                    <td>{{ borrowing.borrow_date }}</td>
+                    <td>{{ borrowing.due_date }}</td>
+                    <td>{{ borrowing.return_date }}</td>
+                <td>
+                    <a href="{% url 'borrowing_detail' borrowing.id %}">Détails</a> |
+                    <a href="{% url 'borrowing_update' borrowing.id %}">Modifier</a> |
+                    
+                </td>
+                {% empty %}
+                        <p>La liste est vide</p>
+                </tr>
+                {% endfor %}
+                    
+            </tbody>
+        </table>
+    </section>
+    {% endblock %}
+

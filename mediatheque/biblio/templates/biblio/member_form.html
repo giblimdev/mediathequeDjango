@@ -1,0 +1,12 @@
+{% extends "biblio/base.html" %}
+<p>media_form</p>
+{% block content %}
+<p>member_form.html</p>
+<h2>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} Membre</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %}</button>
+</form>
+<a href="{% url 'home' %}">Retour</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bibliothèque{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/biblio.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bibliothèque</h1>
+        <nav>
+            <ul>
+                <li><a href='member'>Espace Membre</a></li>
+                <li><a href='biblio'>Espace Gestinnaire</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

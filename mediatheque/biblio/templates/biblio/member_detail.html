@@ -1,0 +1,13 @@
+{% extends "biblio/base.html" %}
+
+{% block title %}Détails du membre{% endblock %}
+
+{% block content %}
+
+<h2>{{ member.title }}</h2>
+<p>Auteur: {{ media.author }}</p>
+<p>{{ member.name }}</p>
+<p>{{ member.nb_borrow }}</p>
+<p>{{ member.can_borrow|yesno:"Oui,Non" }}<p>
+
+{% endblock %}
