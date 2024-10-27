@@ -93,15 +93,31 @@ def media_delete(request, media_id):
         return redirect('home')
     return render(request, 'biblio/media_confirm_delete.html', {'media': media})
         
+        
 def borrowing_create(request):
     if request.method == "POST":
         form = BorrowingForm(request.POST)
-        if form.is_valid():             
-            form.save()
+        if form.is_valid():
+            borrowing = form.save(commit=False)
+            member = borrowing.member
+            media = borrowing.media
+
+            # Vérifie si le membre peut emprunter
+            if not member.can_borrow:
+                messages.error(request, "Ce membre ne peut pas emprunter.")
+                return render(request, 'biblio/borrowing_form.html', {'form': form})
+
+            # Vérifie si le média est disponible
+            if not media.is_available:
+                messages.error(request, "Ce média n'est pas disponible.")
+                return render(request, 'biblio/borrowing_form.html', {'form': form})
+
+            borrowing.save()
             return redirect('home')
     else:
         form = BorrowingForm()
     return render(request, 'biblio/borrowing_form.html', {'form': form})
+
            
 def borrowing_detail(request, borrowing_id):
     borrowing = get_object_or_404(Borrowing, id=borrowing_id)

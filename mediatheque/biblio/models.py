@@ -54,6 +54,8 @@ class Borrowing(models.Model):
         self.media.is_available = False
         self.media.save()
         self.member.nb_borrow += 1
+        if self.member.nb_borrow >= 3:
+            self.member.can_borrow = False    
         self.member.save()  
         
     def return_media(self,  *args, **kwargs):
@@ -62,4 +64,7 @@ class Borrowing(models.Model):
         self.media.is_available = True
         self.media.save()
         self.member.nb_borrow -=1
+        if self.member.nb_borrow <= 3:
+            self.member.can_borrow = True    
+        
         self.member.save()

@@ -18,12 +18,28 @@
                 <li><a href="{% url 'borrowing_create' %}">Emprunter un média</a></li>
             </ul>
         </nav>
+
     </header>
 
     <main>
+
         {% block content %}
         {% endblock %}
-    </main>
 
+        <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>
+                    {{ message }}
+                </li>
+                {% endfor %}
+            {% endif%}
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Médiathèque</p>
+    </footer>
 </body>
 </html>

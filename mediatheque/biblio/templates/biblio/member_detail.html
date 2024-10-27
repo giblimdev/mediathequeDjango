@@ -5,9 +5,9 @@
 {% block content %}
 
 <h2>{{ member.title }}</h2>
-<p>Auteur: {{ media.author }}</p>
-<p>{{ member.name }}</p>
-<p>{{ member.nb_borrow }}</p>
-<p>{{ member.can_borrow|yesno:"Oui,Non" }}<p>
+
+<p>Nom : {{ member.name }}</p>
+<p>Nb_de media : {{ member.nb_borrow }}</p>
+<p>Peux Emprunter : {{ member.can_borrow|yesno:"Oui,Non" }}<p>
 
 {% endblock %}

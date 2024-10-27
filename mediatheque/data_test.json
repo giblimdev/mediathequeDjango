@@ -1,0 +1,19 @@
+{
+   "members": [
+       {"name": "Donald"},
+       {"name": "Picsou"},
+       {"name": "Riri"},
+       {"name": "Fifi"},
+       {"name": "Loulou"}
+   ],
+   "medias": [
+       {"title": "Illusions", "author": "Richard Bach", "category": "book"},
+       {"title": "Un pont vers l'infini", "author": "Richard Bach", "category": "book"},
+       {"title": "Matrix", "author": "Wachowski Sisters", "category": "Dvd"},
+       {"title": "La Belle Verte", "author": "Coline Serreau", "category": "Dvd"},
+       {"title": "Solitude Standing", "author": "Suzanne Vega", "category": "Cd"},
+       {"title": "Graceland", "author": "Paul Simon", "category": "Cd"},
+       {"title": "La Bonne Paye", "author": "Hasbro", "category": "board_game"},
+       {"title": "Cluedo", "author": "Hasbro", "category": "board_game"}
+   ]
+}
