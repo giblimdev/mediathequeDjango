@@ -18,7 +18,6 @@ Une application Django pour la gestion d'une médiathèque, permettant la gestio
 2. **Créer et Activer un Environnement Virtuel :**
 
    ```bash
-
 python -m venv env
 source env/bin/activate  # Pour Linux/MacOS
 .\env\Scripts\activate   # Pour Windows
@@ -26,7 +25,6 @@ source env/bin/activate  # Pour Linux/MacOS
 3. **Installer les Dépendances :**
 
    ```bash
-
 pip install -r requirements.txt
 Appliquer les Migrations et Charger les Données de Test :
 
@@ -34,7 +32,7 @@ Appliquer les Migrations et Charger les Données de Test :
    ```bash
 python manage.py migrate
 python manage.py loaddata data_test.json
-```
+
 
 4. **Démarrer le Serveur :**
 
